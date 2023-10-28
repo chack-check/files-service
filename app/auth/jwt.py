@@ -22,4 +22,3 @@ def decode_token(token: str) -> TokenUser:
         return TokenUser(**decoded_sub)
     except (AssertionError, KeyError, JWTError):
         raise IncorrectToken
-

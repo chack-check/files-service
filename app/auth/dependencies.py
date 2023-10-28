@@ -31,4 +31,3 @@ def auth_required(user: Annotated[TokenUser | None, Depends(current_user)]) -> T
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect token")
 
     return user
-

@@ -40,4 +40,3 @@ class S3Connection:
         url = self._get_url_for_key(bucket_name, key)
         await self._put_object(bucket_name, key, file)
         return FileUrl(filename=file.filename, url=url)
-

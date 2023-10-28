@@ -9,4 +9,3 @@ class FileUrl(BaseModel):
 class GenerateAvatarRequest(BaseModel):
     metadata: str
     title: str
-

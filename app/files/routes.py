@@ -33,4 +33,3 @@ def generate_avatar(request: GenerateAvatarRequest):
         avatar_generator(request.metadata, request.title),
         media_type="image/svg+xml"
     )
-

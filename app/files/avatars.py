@@ -19,4 +19,3 @@ def generate_avatar(metadata: str, title: str) -> bytes:
 def avatar_generator(metadata: str, title: str):
     avatar = generate_avatar(metadata, title)
     yield avatar
-
