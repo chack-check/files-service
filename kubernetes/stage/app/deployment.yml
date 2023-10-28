@@ -42,5 +42,5 @@ spec:
             - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
-                  name: files-service-credentials
+                  name: users-service-credentials
                   key: secret_key
