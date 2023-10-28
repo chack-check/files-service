@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chack-files-service
+spec:
+  selector:
+    app: chack-files-service
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      name: web

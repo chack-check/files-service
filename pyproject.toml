@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "files-service"
+version = "0.1.0"
+description = "Chack check files service"
+authors = ["artemowkin <artyom.groshev2017@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.2"
+uvicorn = "^0.23.2"
+pydantic = "^2.4.2"
+boto3 = "^1.28.61"
+pydantic-settings = "^2.0.3"
+python-multipart = "^0.0.6"
+python-jose = "^3.3.0"
+msgspec = "^0.18.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
