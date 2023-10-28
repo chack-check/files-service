@@ -26,12 +26,19 @@ spec:
             - name: RUN_MODE
               value: stage
             - name: S3_ENDPOINT_URL
+              value: https://storage.yandexcloud.net
+            - name: S3_BUCKET_NAME
+              value: chackcheck
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: files-service-credentials
-                  key: s3_endpoint_url
-            - name: S3_BUCKET_NAME
-              value: chackcheck
+                  key: aws_access_key_id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: files-service-credentials
+                  key: aws_secret_access_key
             - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
