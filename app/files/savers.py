@@ -28,7 +28,7 @@ class BaseSaver:
             raise FileWithoutFilenameError()
 
         file_extension = convert_to if convert_to else file.filename.split('.')[-1]
-        if not file_extension in self.converters:
+        if file_extension not in self.converters:
             return None
 
         return file_extension
@@ -58,7 +58,7 @@ class BaseSaver:
             raise FileWithoutFilenameError
 
         file_extension = convert_to if convert_to else file.filename.split('.')[-1]
-        if not file_extension in self.converters:
+        if file_extension not in self.converters:
             CantConvertFile(file_extension)
 
         return file.filename.split('.')[0] + f".{file_extension}"
@@ -82,7 +82,7 @@ class BaseSaver:
         converted_object = await self._s3_connection.publish_object(settings.s3_bucket_name, converted_file)
         converted_object_signature = generate_signature(converted_file_filename, system_filetype)
         return (converted_object, converted_object_signature)
-    
+
     def _make_saved_file_schema(self, system_filetype: str,
                                 original_object: FileUrl,
                                 original_signature: str,
@@ -104,9 +104,9 @@ class BaseSaver:
         )
 
     async def save_file(self, file: UploadFile,
-                  system_filetype: str,
-                  convert_to: str | None = None,
-                  compress: bool = True) -> SavedFile:
+                        system_filetype: str,
+                        convert_to: str | None = None,
+                        compress: bool = True) -> SavedFile:
         if not file.filename:
             raise FileWithoutFilenameError
 
