@@ -1,14 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .files.routes import router as files_router
+from .graph.router import router
 from .settings import settings
 
-
-app = FastAPI(
-    docs_url="/api/v1/files/docs" if settings.run_mode == 'dev' else None,
-    redoc_url="/api/v1/files/redoc" if settings.run_mode == 'dev' else None,
-)
+app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 
 
 app.add_middleware(
@@ -19,4 +15,4 @@ app.add_middleware(
     allow_headers=['*']
 )
 
-app.include_router(files_router, prefix="/api/v1/files")
+app.include_router(router, prefix="/api/v1/files")

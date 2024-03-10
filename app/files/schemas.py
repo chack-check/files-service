@@ -8,8 +8,10 @@ class ConvertionOptions(Enum):
 
 
 class SystemFiletypes(Enum):
-    avatar = 'avatar'
-    file_in_chat = 'file_in_chat'
+    avatar = "avatar"
+    file_in_chat = "file_in_chat"
+    voice = "voice"
+    circle = "circle"
 
 
 class FileUrl(BaseModel):
