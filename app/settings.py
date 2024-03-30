@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     s3_bucket_name: str = 'chackcheck'
     max_avatar_video_duration: int = 10
     allowed_origins: list[str] = ['*']
+    sentry_dsn: str | None = None
 
 
 settings = Settings()
