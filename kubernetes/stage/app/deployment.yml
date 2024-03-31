@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chack-files-service-deployment
+  labels:
+    app: chack-files-service
+    name: chack-files-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chack-files-service
+  template:
+    metadata:
+      labels:
+        app: chack-files-service
+    spec:
+      containers:
+        - name: chack-files-service
+          image: artemowkin/chack-files-service:latest
+          ports:
+            - containerPort: 8000
+              name: web
+          command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "debug"]
+          env:
+            - name: RUN_MODE
+              value: stage
+            - name: S3_ENDPOINT_URL
+              value: https://storage.yandexcloud.net
+            - name: S3_BUCKET_NAME
+              value: chackcheck
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: files-service-credentials
+                  key: aws_access_key_id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: files-service-credentials
+                  key: aws_secret_access_key
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: users-service-credentials
+                  key: secret_key
+            - name: SIGNATURE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: files-service-credentials
+                  key: signature_key
+
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: files-service-credentials
+                  key: sentry_dsn

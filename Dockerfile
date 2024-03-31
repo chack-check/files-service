@@ -5,6 +5,9 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /src
 
+RUN apt update
+RUN apt install -y libgl1-mesa-glx
+
 RUN pip install -U poetry
 RUN poetry config virtualenvs.create false
 
