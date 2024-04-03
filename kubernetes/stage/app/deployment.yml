@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: chack-files-service
-          image: artemowkin/chack-files-service:latest
+          image: artemowkin/diffaction-files-service:latest
           ports:
             - containerPort: 8000
               name: web
