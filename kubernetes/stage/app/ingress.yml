@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: chack-files-service-ingress
+  name: diffaction-files-service-ingress
   labels:
-    app: chack-files-service
+    app: diffaction-files-service
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/issuer: "letsencrypt-production"
     nginx.ingress.kubernetes.io/proxy-body-size: 10240m
 spec:
   ingressClassName: nginx
   tls:
   - hosts:
       - stage.diffaction.com
-    secretName: letsencrypt
+    secretName: diffaction-tls
   rules:
   - host: stage.diffaction.com
     http:
@@ -21,6 +21,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: chack-files-service
+            name: diffaction-files-service
             port:
               number: 8000

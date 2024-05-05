@@ -1,9 +1,10 @@
 from uuid import uuid4
-from fastapi import UploadFile
-import boto3
 
-from .schemas import FileUrl
+import boto3
+from fastapi import UploadFile
+
 from .exceptions import IncorrectFileName
+from .schemas import FileUrl
 
 
 class S3Connection:
@@ -12,18 +13,18 @@ class S3Connection:
         self._endpoint_url = endpoint_url
         self._session = boto3.Session()
         self._client = self._session.client(
-            service_name='s3',
+            service_name="s3",
             endpoint_url=endpoint_url,
         )
 
     def _generate_file_key_for_filename(self, filename: str) -> str:
         file_uuid = str(uuid4())
-        file_extension = filename.split('.')[-1]
+        file_extension = filename.split(".")[-1]
         key = f"{file_uuid}.{file_extension}"
         return key
 
     def _get_url_for_key(self, bucket_name: str, key: str) -> str:
-        return f"{self._endpoint_url}/{bucket_name}/{key}"
+        return f"{self._endpoint_url}/{key}"
 
     def _validate_filename(self, filename: str | None) -> None:
         if not filename:
