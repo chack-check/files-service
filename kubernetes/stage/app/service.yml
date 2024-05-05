@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: chack-files-service
+  name: diffaction-files-service
 spec:
   selector:
-    app: chack-files-service
+    app: diffaction-files-service
   ports:
     - protocol: TCP
       port: 8000

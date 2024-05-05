@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chack-files-service-deployment
+  name: diffaction-files-service-deployment
   labels:
-    app: chack-files-service
-    name: chack-files-service
+    app: diffaction-files-service
+    name: diffaction-files-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: chack-files-service
+      app: diffaction-files-service
   template:
     metadata:
       labels:
-        app: chack-files-service
+        app: diffaction-files-service
     spec:
       containers:
-        - name: chack-files-service
+        - name: diffaction-files-service
           image: artemowkin/diffaction-files-service:latest
           ports:
             - containerPort: 8000
@@ -26,9 +26,9 @@ spec:
             - name: RUN_MODE
               value: stage
             - name: S3_ENDPOINT_URL
-              value: https://storage.yandexcloud.net
+              value: https://storage.diffaction.com
             - name: S3_BUCKET_NAME
-              value: chackcheck
+              value: 3acc250c-5753dc83-1a8d-41ad-956d-ababb253e7e4
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
