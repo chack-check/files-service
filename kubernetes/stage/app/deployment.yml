@@ -26,7 +26,7 @@ spec:
             - name: RUN_MODE
               value: stage
             - name: S3_ENDPOINT_URL
-              value: https://storage.diffaction.com
+              value: https://s3.timeweb.cloud
             - name: S3_BUCKET_NAME
               value: 3acc250c-5753dc83-1a8d-41ad-956d-ababb253e7e4
             - name: AWS_ACCESS_KEY_ID
