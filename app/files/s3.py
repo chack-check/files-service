@@ -24,7 +24,7 @@ class S3Connection:
         return key
 
     def _get_url_for_key(self, bucket_name: str, key: str) -> str:
-        return f"{self._endpoint_url}/{key}"
+        return f"{self._endpoint_url}/{bucket_name}/{key}"
 
     def _validate_filename(self, filename: str | None) -> None:
         if not filename:
