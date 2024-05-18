@@ -28,7 +28,7 @@ spec:
             - name: S3_ENDPOINT_URL
               value: https://storage.yandexcloud.net
             - name: S3_BUCKET_NAME
-              value: 3acc250c-5753dc83-1a8d-41ad-956d-ababb253e7e4
+              value: diffaction
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
