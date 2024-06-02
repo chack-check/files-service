@@ -9,10 +9,12 @@ from app.settings import settings
 class BaseConverter(ABC):
 
     @abstractmethod
-    def convert(self, file_bytes: bytes, compress: bool) -> bytes: ...
+    def convert(self, file_bytes: bytes, compress: bool) -> bytes:
+        pass
 
     @abstractmethod
-    def get_extension(self) -> str: ...
+    def get_extension(self) -> str:
+        pass
 
 
 class ImageWebpConverter(BaseConverter):
